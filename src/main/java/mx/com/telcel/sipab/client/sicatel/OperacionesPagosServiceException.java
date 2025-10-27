@@ -1,0 +1,90 @@
+
+package mx.com.telcel.sipab.client.sicatel;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Clase Java para OperacionesPagosServiceException complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
+ * <pre>
+ * &lt;complexType name="OperacionesPagosServiceException"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="controlData" type="{http://amx.com/mexico/telcel/esb/v1_1}ControlDataResponseType"/&gt;
+ *         &lt;element name="detailFail" type="{http://amx.com/mexico/telcel/esb/v1_1}DetailFailType"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "OperacionesPagosServiceException", propOrder = {
+    "controlData",
+    "detailFail"
+})
+public class OperacionesPagosServiceException {
+
+    @XmlElement(required = true)
+    protected ControlDataResponseType controlData;
+    @XmlElement(required = true)
+    protected DetailFailType detailFail;
+
+    /**
+     * Obtiene el valor de la propiedad controlData.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ControlDataResponseType }
+     *     
+     */
+    public ControlDataResponseType getControlData() {
+        return controlData;
+    }
+
+    /**
+     * Define el valor de la propiedad controlData.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ControlDataResponseType }
+     *     
+     */
+    public void setControlData(ControlDataResponseType value) {
+        this.controlData = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad detailFail.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DetailFailType }
+     *     
+     */
+    public DetailFailType getDetailFail() {
+        return detailFail;
+    }
+
+    /**
+     * Define el valor de la propiedad detailFail.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DetailFailType }
+     *     
+     */
+    public void setDetailFail(DetailFailType value) {
+        this.detailFail = value;
+    }
+
+}

@@ -1,0 +1,98 @@
+
+package mx.com.telcel.sipab.client.interfaces;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Clase Java para PageType complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
+ * <pre>
+ * &lt;complexType name="PageType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="pageSize" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/crm/esb/telcelinterfaceservices}Entero10dType"/&gt;
+ *         &lt;element name="startNum" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/crm/esb/telcelinterfaceservices}Entero10dType"/&gt;
+ *         &lt;element name="totalNum" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/crm/esb/telcelinterfaceservices}Entero10dType" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "PageType", propOrder = {
+    "pageSize",
+    "startNum",
+    "totalNum"
+})
+public class PageType {
+
+    protected int pageSize;
+    protected int startNum;
+    protected Integer totalNum;
+
+    /**
+     * Obtiene el valor de la propiedad pageSize.
+     * 
+     */
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    /**
+     * Define el valor de la propiedad pageSize.
+     * 
+     */
+    public void setPageSize(int value) {
+        this.pageSize = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad startNum.
+     * 
+     */
+    public int getStartNum() {
+        return startNum;
+    }
+
+    /**
+     * Define el valor de la propiedad startNum.
+     * 
+     */
+    public void setStartNum(int value) {
+        this.startNum = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad totalNum.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getTotalNum() {
+        return totalNum;
+    }
+
+    /**
+     * Define el valor de la propiedad totalNum.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setTotalNum(Integer value) {
+        this.totalNum = value;
+    }
+
+}

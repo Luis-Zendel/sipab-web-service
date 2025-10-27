@@ -1,0 +1,1000 @@
+
+package mx.com.telcel.sipab.client.cbs;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Clase Java para PaymentInfoResType complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * 
+ * <pre>
+ * &lt;complexType name="PaymentInfoResType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="acctKey" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}AcctKeyType"/&gt;
+ *         &lt;element name="custKey" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CustKeyType"/&gt;
+ *         &lt;element name="subKey" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica64Type" minOccurs="0"/&gt;
+ *         &lt;element name="primaryIdentity" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica64Type" minOccurs="0"/&gt;
+ *         &lt;element name="transID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica64Type"/&gt;
+ *         &lt;element name="transType" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica8Type" minOccurs="0"/&gt;
+ *         &lt;element name="extTransID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica32Type" minOccurs="0"/&gt;
+ *         &lt;element name="extPayType" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica32Type" minOccurs="0"/&gt;
+ *         &lt;element name="paymentTime" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica14Type"/&gt;
+ *         &lt;element name="amount" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type"/&gt;
+ *         &lt;element name="currencyID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CurrencyIDType"/&gt;
+ *         &lt;element name="oriAmount" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="oriCurrencyID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CurrencyIDType" minOccurs="0"/&gt;
+ *         &lt;element name="currencyRate" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}FloatType" minOccurs="0"/&gt;
+ *         &lt;element name="paymentDetail" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}PaymentDetailType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="paymentMethod" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica6Type" minOccurs="0"/&gt;
+ *         &lt;element name="rechargeType" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica24Type" minOccurs="0"/&gt;
+ *         &lt;element name="cardInfo" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CardInfoType" minOccurs="0"/&gt;
+ *         &lt;element name="bankInfo" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}BankInfoType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="payChannelID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica8Type" minOccurs="0"/&gt;
+ *         &lt;element name="accessMode" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica16Type" minOccurs="0"/&gt;
+ *         &lt;element name="status" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica1Type"/&gt;
+ *         &lt;element name="resultCode" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}CadenaAlfanumerica24Type" minOccurs="0"/&gt;
+ *         &lt;element name="operID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="deptID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="reversalOpID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="reversalDeptID" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="reversalTime" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Datetime14Type" minOccurs="0"/&gt;
+ *         &lt;element name="lifeCycleChgInfo" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}LifeCycleChgInfo2Type" minOccurs="0"/&gt;
+ *         &lt;element name="balanceChgInfo" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}BalanceChgInfoType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="rechargeBonus" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}RechargeBonusType" minOccurs="0"/&gt;
+ *         &lt;element name="additionalProperty" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}SimplePropertyType" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="totalPaymentAmount" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="curAmount" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *         &lt;element name="taxAmount" type="{http://www.amx.com.mx/mexico/telcel/di/sds/bes/esb/arservices}Long19Type" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "PaymentInfoResType", propOrder = {
+    "acctKey",
+    "custKey",
+    "subKey",
+    "primaryIdentity",
+    "transID",
+    "transType",
+    "extTransID",
+    "extPayType",
+    "paymentTime",
+    "amount",
+    "currencyID",
+    "oriAmount",
+    "oriCurrencyID",
+    "currencyRate",
+    "paymentDetail",
+    "paymentMethod",
+    "rechargeType",
+    "cardInfo",
+    "bankInfo",
+    "payChannelID",
+    "accessMode",
+    "status",
+    "resultCode",
+    "operID",
+    "deptID",
+    "reversalOpID",
+    "reversalDeptID",
+    "reversalTime",
+    "lifeCycleChgInfo",
+    "balanceChgInfo",
+    "rechargeBonus",
+    "additionalProperty",
+    "totalPaymentAmount",
+    "curAmount",
+    "taxAmount"
+})
+public class PaymentInfoResType {
+
+    @XmlElement(required = true)
+    protected String acctKey;
+    @XmlElement(required = true)
+    protected String custKey;
+    protected String subKey;
+    protected String primaryIdentity;
+    @XmlElement(required = true)
+    protected String transID;
+    protected String transType;
+    protected String extTransID;
+    protected String extPayType;
+    @XmlElement(required = true)
+    protected String paymentTime;
+    protected long amount;
+    @XmlElement(required = true)
+    protected BigInteger currencyID;
+    protected Long oriAmount;
+    protected BigInteger oriCurrencyID;
+    protected Float currencyRate;
+    protected List<PaymentDetailType> paymentDetail;
+    protected String paymentMethod;
+    protected String rechargeType;
+    protected CardInfoType cardInfo;
+    protected List<BankInfoType> bankInfo;
+    protected String payChannelID;
+    protected String accessMode;
+    @XmlElement(required = true)
+    protected String status;
+    protected String resultCode;
+    protected Long operID;
+    protected Long deptID;
+    protected Long reversalOpID;
+    protected Long reversalDeptID;
+    protected String reversalTime;
+    protected LifeCycleChgInfo2Type lifeCycleChgInfo;
+    protected List<BalanceChgInfoType> balanceChgInfo;
+    protected RechargeBonusType rechargeBonus;
+    protected List<SimplePropertyType> additionalProperty;
+    protected Long totalPaymentAmount;
+    protected Long curAmount;
+    protected Long taxAmount;
+
+    /**
+     * Obtiene el valor de la propiedad acctKey.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAcctKey() {
+        return acctKey;
+    }
+
+    /**
+     * Define el valor de la propiedad acctKey.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAcctKey(String value) {
+        this.acctKey = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad custKey.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCustKey() {
+        return custKey;
+    }
+
+    /**
+     * Define el valor de la propiedad custKey.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCustKey(String value) {
+        this.custKey = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad subKey.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSubKey() {
+        return subKey;
+    }
+
+    /**
+     * Define el valor de la propiedad subKey.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSubKey(String value) {
+        this.subKey = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad primaryIdentity.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPrimaryIdentity() {
+        return primaryIdentity;
+    }
+
+    /**
+     * Define el valor de la propiedad primaryIdentity.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPrimaryIdentity(String value) {
+        this.primaryIdentity = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad transID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTransID() {
+        return transID;
+    }
+
+    /**
+     * Define el valor de la propiedad transID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTransID(String value) {
+        this.transID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad transType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTransType() {
+        return transType;
+    }
+
+    /**
+     * Define el valor de la propiedad transType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTransType(String value) {
+        this.transType = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad extTransID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExtTransID() {
+        return extTransID;
+    }
+
+    /**
+     * Define el valor de la propiedad extTransID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExtTransID(String value) {
+        this.extTransID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad extPayType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExtPayType() {
+        return extPayType;
+    }
+
+    /**
+     * Define el valor de la propiedad extPayType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExtPayType(String value) {
+        this.extPayType = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad paymentTime.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPaymentTime() {
+        return paymentTime;
+    }
+
+    /**
+     * Define el valor de la propiedad paymentTime.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPaymentTime(String value) {
+        this.paymentTime = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad amount.
+     * 
+     */
+    public long getAmount() {
+        return amount;
+    }
+
+    /**
+     * Define el valor de la propiedad amount.
+     * 
+     */
+    public void setAmount(long value) {
+        this.amount = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad currencyID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getCurrencyID() {
+        return currencyID;
+    }
+
+    /**
+     * Define el valor de la propiedad currencyID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setCurrencyID(BigInteger value) {
+        this.currencyID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad oriAmount.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getOriAmount() {
+        return oriAmount;
+    }
+
+    /**
+     * Define el valor de la propiedad oriAmount.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setOriAmount(Long value) {
+        this.oriAmount = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad oriCurrencyID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getOriCurrencyID() {
+        return oriCurrencyID;
+    }
+
+    /**
+     * Define el valor de la propiedad oriCurrencyID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setOriCurrencyID(BigInteger value) {
+        this.oriCurrencyID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad currencyRate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Float }
+     *     
+     */
+    public Float getCurrencyRate() {
+        return currencyRate;
+    }
+
+    /**
+     * Define el valor de la propiedad currencyRate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Float }
+     *     
+     */
+    public void setCurrencyRate(Float value) {
+        this.currencyRate = value;
+    }
+
+    /**
+     * Gets the value of the paymentDetail property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the paymentDetail property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getPaymentDetail().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link PaymentDetailType }
+     * 
+     * 
+     */
+    public List<PaymentDetailType> getPaymentDetail() {
+        if (paymentDetail == null) {
+            paymentDetail = new ArrayList<PaymentDetailType>();
+        }
+        return this.paymentDetail;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad paymentMethod.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    /**
+     * Define el valor de la propiedad paymentMethod.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPaymentMethod(String value) {
+        this.paymentMethod = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad rechargeType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRechargeType() {
+        return rechargeType;
+    }
+
+    /**
+     * Define el valor de la propiedad rechargeType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRechargeType(String value) {
+        this.rechargeType = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad cardInfo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CardInfoType }
+     *     
+     */
+    public CardInfoType getCardInfo() {
+        return cardInfo;
+    }
+
+    /**
+     * Define el valor de la propiedad cardInfo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CardInfoType }
+     *     
+     */
+    public void setCardInfo(CardInfoType value) {
+        this.cardInfo = value;
+    }
+
+    /**
+     * Gets the value of the bankInfo property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the bankInfo property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBankInfo().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BankInfoType }
+     * 
+     * 
+     */
+    public List<BankInfoType> getBankInfo() {
+        if (bankInfo == null) {
+            bankInfo = new ArrayList<BankInfoType>();
+        }
+        return this.bankInfo;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad payChannelID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPayChannelID() {
+        return payChannelID;
+    }
+
+    /**
+     * Define el valor de la propiedad payChannelID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPayChannelID(String value) {
+        this.payChannelID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad accessMode.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getAccessMode() {
+        return accessMode;
+    }
+
+    /**
+     * Define el valor de la propiedad accessMode.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setAccessMode(String value) {
+        this.accessMode = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad status.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Define el valor de la propiedad status.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStatus(String value) {
+        this.status = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad resultCode.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    /**
+     * Define el valor de la propiedad resultCode.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setResultCode(String value) {
+        this.resultCode = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad operID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getOperID() {
+        return operID;
+    }
+
+    /**
+     * Define el valor de la propiedad operID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setOperID(Long value) {
+        this.operID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad deptID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getDeptID() {
+        return deptID;
+    }
+
+    /**
+     * Define el valor de la propiedad deptID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setDeptID(Long value) {
+        this.deptID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad reversalOpID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getReversalOpID() {
+        return reversalOpID;
+    }
+
+    /**
+     * Define el valor de la propiedad reversalOpID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setReversalOpID(Long value) {
+        this.reversalOpID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad reversalDeptID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getReversalDeptID() {
+        return reversalDeptID;
+    }
+
+    /**
+     * Define el valor de la propiedad reversalDeptID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setReversalDeptID(Long value) {
+        this.reversalDeptID = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad reversalTime.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReversalTime() {
+        return reversalTime;
+    }
+
+    /**
+     * Define el valor de la propiedad reversalTime.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReversalTime(String value) {
+        this.reversalTime = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad lifeCycleChgInfo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link LifeCycleChgInfo2Type }
+     *     
+     */
+    public LifeCycleChgInfo2Type getLifeCycleChgInfo() {
+        return lifeCycleChgInfo;
+    }
+
+    /**
+     * Define el valor de la propiedad lifeCycleChgInfo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LifeCycleChgInfo2Type }
+     *     
+     */
+    public void setLifeCycleChgInfo(LifeCycleChgInfo2Type value) {
+        this.lifeCycleChgInfo = value;
+    }
+
+    /**
+     * Gets the value of the balanceChgInfo property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the balanceChgInfo property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBalanceChgInfo().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BalanceChgInfoType }
+     * 
+     * 
+     */
+    public List<BalanceChgInfoType> getBalanceChgInfo() {
+        if (balanceChgInfo == null) {
+            balanceChgInfo = new ArrayList<BalanceChgInfoType>();
+        }
+        return this.balanceChgInfo;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad rechargeBonus.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RechargeBonusType }
+     *     
+     */
+    public RechargeBonusType getRechargeBonus() {
+        return rechargeBonus;
+    }
+
+    /**
+     * Define el valor de la propiedad rechargeBonus.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RechargeBonusType }
+     *     
+     */
+    public void setRechargeBonus(RechargeBonusType value) {
+        this.rechargeBonus = value;
+    }
+
+    /**
+     * Gets the value of the additionalProperty property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the additionalProperty property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAdditionalProperty().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link SimplePropertyType }
+     * 
+     * 
+     */
+    public List<SimplePropertyType> getAdditionalProperty() {
+        if (additionalProperty == null) {
+            additionalProperty = new ArrayList<SimplePropertyType>();
+        }
+        return this.additionalProperty;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad totalPaymentAmount.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getTotalPaymentAmount() {
+        return totalPaymentAmount;
+    }
+
+    /**
+     * Define el valor de la propiedad totalPaymentAmount.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setTotalPaymentAmount(Long value) {
+        this.totalPaymentAmount = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad curAmount.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getCurAmount() {
+        return curAmount;
+    }
+
+    /**
+     * Define el valor de la propiedad curAmount.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setCurAmount(Long value) {
+        this.curAmount = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad taxAmount.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getTaxAmount() {
+        return taxAmount;
+    }
+
+    /**
+     * Define el valor de la propiedad taxAmount.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setTaxAmount(Long value) {
+        this.taxAmount = value;
+    }
+
+}
