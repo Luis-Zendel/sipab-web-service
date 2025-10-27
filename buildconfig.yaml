@@ -1,0 +1,28 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: sipab-webservice
+  namespace: sipab4
+spec:
+  source:
+    type: Git
+    git:
+      uri: https://github.com/Luis-Zendel/sipab-web-service.git
+      ref: main
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: sipab-webservice:latest
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "2"
+      memory: "3Gi"
+  runPolicy: Serial
+
