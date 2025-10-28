@@ -1,0 +1,53 @@
+schemaVersion: 2.2.0
+metadata:
+  name: sipab-webservice
+  version: 1.0.0
+  attributes:
+    alpha.dockerimage-port: 8181
+  displayName: SIPAB Web Service
+  description: Servicios REST para SIPAB corporativo
+  projectType: springboot
+  language: Java
+  tags:
+    - Java
+    - Spring Boot
+    - Oracle
+components:
+  - name: image-build
+    image:
+      imageName: sipab-webservice-image:latest
+      dockerfile:
+        uri: docker/Dockerfile
+        buildContext: .
+        rootRequired: false
+  - name: kubernetes-deploy
+    attributes:
+      deployment/replicas: 2
+      deployment/cpuRequest: 500m
+      deployment/memoryRequest: 512Mi
+      deployment/cpuLimit: 2000m
+      deployment/memoryLimit: 1536Mi
+      deployment/container-port: 8181
+    kubernetes:
+      uri: deploy.yaml
+      endpoints:
+        - name: http-8181
+          targetPort: 8181
+          path: /
+          secure: true
+commands:
+  - id: build-image
+    apply:
+      component: image-build
+  - id: deployk8s
+    apply:
+      component: kubernetes-deploy
+  - id: deploy
+    composite:
+      commands:
+        - build-image
+        - deployk8s
+      group:
+        kind: deploy
+        isDefault: true
+

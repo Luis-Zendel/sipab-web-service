@@ -1,0 +1,17 @@
+Ejecuta estos comandos para verificar el estado:
+
+# 1. Ver estado del deployment
+oc get deployment sipab-webservice
+
+# 2. Ver todos los recursos
+oc get all
+
+# 3. Ver pods (lo más importante)
+oc get pods
+
+# 4. Ver la URL pública
+oc get route sipab-webservice
+
+# 5. Ver logs de la aplicación
+oc logs -f deployment/sipab-webservice
+
