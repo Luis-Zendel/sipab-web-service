@@ -1,43 +1,51 @@
 ####
 # Dockerfile para SIPABWebService
-# Este Dockerfile sigue el patrón de Red Hat OpenShift
+# Usa imágenes oficiales de Eclipse Temurin (permitidas por políticas)
 #
 # Build the image with:
 # docker build -f docker/Dockerfile -t sipab-webservice .
 ####
-FROM registry.access.redhat.com/ubi8/openjdk-17:1.23-3.1757607140 AS builder
+FROM maven:3.9-eclipse-temurin-17 AS builder
 
 # Build dependency offline to streamline build
-RUN mkdir project
-WORKDIR /home/jboss/project
+WORKDIR /app
+
+# Copiar pom.xml y descargar dependencias (cached layer)
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
+# Copiar código fuente
 COPY src src
 RUN mvn package -Dmaven.test.skip=true -B
 
-# compute the created jar name and put it in a known location to copy to the next layer.
-# If the user changes pom.xml to have a different version, or artifactId, this will find the jar
+# Copiar configuración
+RUN mkdir -p /app/conf
+COPY conf /app/conf
+
+# Encontrar el nombre del JAR generado
 RUN grep version target/maven-archiver/pom.properties | cut -d '=' -f2 >.env-version
 RUN grep artifactId target/maven-archiver/pom.properties | cut -d '=' -f2 >.env-id
 RUN mv target/$(cat .env-id)-$(cat .env-version).jar target/export-run-artifact.jar
 
+# Stage 2: Runtime
+FROM eclipse-temurin:17-jre-alpine
+
+# Copiar JAR desde builder
+COPY --from=builder /app/target/export-run-artifact.jar /deployments/app.jar
+
 # Copiar configuración
-RUN mkdir -p /home/jboss/project/conf
-COPY conf /home/jboss/project/conf
+COPY --from=builder /app/conf /deployments/conf
 
-FROM registry.access.redhat.com/ubi8/openjdk-17-runtime:1.23-3.1757607183
-
-COPY --from=builder /home/jboss/project/target/export-run-artifact.jar /deployments/app.jar
-COPY --from=builder /home/jboss/project/conf /deployments/conf
-
-# Crear usuario no-root
-RUN chown -R 1001:0 /deployments && \
-    chmod -R g+rw /deployments
-
-USER 1001
+# Crear usuario no-root (OpenShift friendly)
+RUN addgroup -S spring && adduser -S spring -G spring
+RUN chown -R spring:spring /deployments
+USER spring
 
 EXPOSE 8181
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8181/actuator/health || exit 1
 
 ENTRYPOINT ["java", "-jar", "/deployments/app.jar", "--server.port=8181"]
 
