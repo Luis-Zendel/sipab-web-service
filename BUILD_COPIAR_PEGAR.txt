@@ -1,0 +1,42 @@
+# ========================================
+# COMANDOS PARA COPIAR Y PEGAR EN POWERSHELL
+# ========================================
+
+# 1. Login a OpenShift
+oc login https://tu-openshift-cluster:6443
+oc project sipab4
+
+# 2. Eliminar BuildConfig anterior
+oc delete buildconfig sipab-webservice
+
+# 3. Crear BuildConfig para binary build
+oc new-build --name=sipab-webservice --strategy=docker --binary
+
+# 4. Navegar al proyecto
+cd c:\Users\INETUM\Downloads\SIPABWebService\SIPABWebService
+
+# 5. Iniciar build desde tu PC (esto envía TODO desde tu máquina)
+oc start-build sipab-webservice --from-dir=. --follow
+
+# ========================================
+# ESPERAR A QUE TERMINE EL BUILD
+# ========================================
+
+# 6. Verificar que terminó
+oc get builds
+
+# 7. Crear secret para base de datos
+oc create secret generic oracle-db-secret --from-literal=url='jdbc:oracle:thin:@10.191.105.18:1550/mbgwdes' --from-literal=username='MBGWOWN' --from-literal=password='september#11'
+
+# 8. Aplicar deployment
+oc apply -f deploy.yaml
+
+# 9. Ver estado de pods
+oc get pods
+
+# 10. Ver logs
+oc logs -f deployment/sipab-webservice
+
+# 11. Obtener URL pública
+oc get route sipab-webservice
+
