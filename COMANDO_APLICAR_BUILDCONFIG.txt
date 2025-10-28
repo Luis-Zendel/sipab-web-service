@@ -1,0 +1,18 @@
+Comando para aplicar el BuildConfig corregido:
+
+oc apply -f buildconfig.yaml
+
+O actualiza en la Web Console:
+1. Ve a Builds → Build Configs → sipab-webservice
+2. Click en "Edit YAML"
+3. Busca la sección strategy
+4. Cambia de:
+   dockerStrategy:
+     dockerfilePath: docker/Dockerfile
+   
+   A:
+   dockerStrategy:
+     dockerfilePath: Dockerfile
+
+5. Guarda y vuelve a intentar el build.
+

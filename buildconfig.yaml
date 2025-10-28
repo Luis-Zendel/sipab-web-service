@@ -9,10 +9,10 @@ spec:
     git:
       uri: https://github.com/Luis-Zendel/sipab-web-service.git
       ref: main
-    contextDir: /
   strategy:
     type: Docker
     dockerStrategy:
+      dockerfilePath: Dockerfile
   output:
     to:
       kind: ImageStreamTag
