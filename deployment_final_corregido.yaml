@@ -1,0 +1,70 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sipab-web-service-git1
+  labels:
+    app: sipab-webservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sipab-web-service-git1
+      deployment: sipab-web-service-git1
+  template:
+    metadata:
+      labels:
+        app: sipab-web-service-git1
+        deployment: sipab-web-service-git1
+    spec:
+      containers:
+        - name: sipab-web-service-git1
+          image: image-registry.openshift-image-registry.svc:5000/sipab4/sipab-web-service-git1@sha256:206ca5fdf37fbcae6e1c4144758a311d43b37b04d3bb02b766664a28e659ce7c
+          ports:
+            - containerPort: 8181
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "openshift"
+            - name: JAVA_OPTS
+              value: "-Xms512m -Xmx1024m"
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: ORACLE_DATASOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: oracle-db-secret
+                  key: url
+            - name: ORACLE_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: oracle-db-secret
+                  key: username
+            - name: ORACLE_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: oracle-db-secret
+                  key: password
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1536Mi"
+              cpu: "2000m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8181
+            initialDelaySeconds: 90
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8181
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          imagePullPolicy: Always
+      # NO incluir securityContext - OpenShift lo manejará
+

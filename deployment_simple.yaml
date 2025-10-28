@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: webservicetest
+  namespace: sipab4
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webservicetest
+  template:
+    metadata:
+      labels:
+        app: webservicetest
+    spec:
+      containers:
+        - name: webservicetest
+          image: image-registry.openshift-image-registry.svc:5000/sipab4/sipab-web-service-git1@sha256:206ca5fdf37fbcae6e1c4144758a311d43b37b04d3bb02b766664a28e659ce7c
+          ports:
+            - containerPort: 8181
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "openshift"
+            - name: JAVA_OPTS
+              value: "-Xms512m -Xmx1024m"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1536Mi"
+              cpu: "2000m"
+          imagePullPolicy: Always
+
